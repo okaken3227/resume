@@ -1,30 +1,79 @@
 /* Global Styles */
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
   color: #333;
+  overflow-x: hidden; /* 横スクロールバーを防ぐ */
 }
 
 /* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #333;
   padding: 1rem;
   color: white;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  margin: 0 1rem;
+  position: relative;
+  z-index: 10;
 }
 
 .navbar-brand {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav li {
+  margin: 5px 1rem;
+}
+
+.navbar-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav a:hover {
+  color: #f0a500;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Cross effect for Hamburger */
+.hamburger.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Section Styles */
@@ -37,15 +86,19 @@ section {
   margin: 0 auto;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #333;
+}
+
+h2 {
+  font-size: 0rem;
 }
 
 /* About Section */
 #about {
   text-align: center;
   background-color: #fff;
-  padding: 5rem 0;
 }
 
 .profile-img {
@@ -97,4 +150,38 @@ h1, h2 {
   text-align: center;
   background-color: #333;
   color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar-nav {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    flex-direction: column;
+    width: 200px;
+    display: none;
+    padding: 1rem 0;
+  }
+
+  .navbar-nav.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .skills-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+  }
+
+  .skills-list li {
+    font-size: 0.8rem;
+  }
 }
